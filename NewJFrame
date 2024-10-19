@@ -1,0 +1,247 @@
+
+package javaapplication13;
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane; 
+
+
+public class NewJFrame extends javax.swing.JFrame {
+   
+    public NewJFrame() {
+        initComponents();
+    }
+    
+public static void main(String args[]) {
+    // Ensure this runs on the Event Dispatch Thread (EDT)
+    java.awt.EventQueue.invokeLater(() -> {
+        NewJFrame frame = new NewJFrame(); // Create an instance of NewJFrame
+        frame.setSize(1920, 1080); // Set a proper window size
+        frame.setLocationRelativeTo(null); // Center the window on the screen
+        frame.setVisible(true); // Make the window visible
+    });
+}
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jButtonLogin = new javax.swing.JButton();
+        EmailLabel = new javax.swing.JLabel();
+        PasswordLabel = new javax.swing.JLabel();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jPasswordFieldPassword = new javax.swing.JPasswordField();
+        jComboBoxRole = new javax.swing.JComboBox<>();
+        RoleSelector = new javax.swing.JLabel();
+        AGAtitle = new javax.swing.JLabel();
+        FPbutton = new javax.swing.JButton();
+        jCheckBoxShowPassword = new javax.swing.JCheckBox();
+        RememberMeButton = new javax.swing.JCheckBox();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
+
+        jButtonLogin.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonLogin.setFont(new java.awt.Font("Barlow Condensed", 0, 24)); // NOI18N
+        jButtonLogin.setForeground(new java.awt.Color(255, 255, 102));
+        jButtonLogin.setText("LOGIN");
+        jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLoginActionPerformed(evt);
+            }
+        });
+
+        EmailLabel.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
+        EmailLabel.setText("Email");
+
+        PasswordLabel.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
+        PasswordLabel.setText("Password");
+
+        jTextFieldEmail.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+
+        jComboBoxRole.setBackground(new java.awt.Color(153, 204, 255));
+        jComboBoxRole.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
+        jComboBoxRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Parent", "Teacher", "Admin" }));
+        jComboBoxRole.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxRoleActionPerformed(evt);
+            }
+        });
+
+        RoleSelector.setFont(new java.awt.Font("Bahnschrift", 0, 24)); // NOI18N
+        RoleSelector.setText("Select role");
+
+        AGAtitle.setFont(new java.awt.Font("Westmount", 0, 36)); // NOI18N
+        AGAtitle.setForeground(new java.awt.Color(255, 204, 0));
+        AGAtitle.setText("AFRICAN GENERATIONS ACADEMY");
+
+        FPbutton.setText("Forgot password?");
+        FPbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FPbuttonActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxShowPassword.setText("Show password");
+        jCheckBoxShowPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxShowPasswordActionPerformed(evt);
+            }
+        });
+
+        RememberMeButton.setFont(new java.awt.Font("Calps Sans Slim", 0, 24)); // NOI18N
+        RememberMeButton.setText("Remember me");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(470, 470, 470)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AGAtitle)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(180, 180, 180)
+                                .addComponent(RoleSelector)
+                                .addGap(33, 33, 33)
+                                .addComponent(jComboBoxRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(600, 600, 600)
+                        .addComponent(EmailLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(560, 560, 560)
+                        .addComponent(PasswordLabel)
+                        .addGap(12, 12, 12)
+                        .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(jCheckBoxShowPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(730, 730, 730)
+                        .addComponent(FPbutton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(741, 741, 741)
+                        .addComponent(jButtonLogin))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(RememberMeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(409, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(AGAtitle)
+                .addGap(106, 106, 106)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RoleSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxRole, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(140, 140, 140)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EmailLabel)
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PasswordLabel)
+                    .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBoxShowPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(FPbutton)
+                .addGap(121, 121, 121)
+                .addComponent(jButtonLogin)
+                .addGap(259, 259, 259)
+                .addComponent(RememberMeButton))
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    String email = jTextFieldEmail.getText();
+        String password = new String(jPasswordFieldPassword.getPassword());
+        String role = jComboBoxRole.getSelectedItem().toString();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter email and password.");
+            return;
+        }
+
+        try {
+        try ( // Set up database connection
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/schooldb", "root", "")) {
+            String query = "SELECT * FROM users WHERE email = ? AND password = ? AND role = ?";
+            PreparedStatement pst = conn.prepareStatement(query);
+            pst.setString(1, email);
+            pst.setString(2, password);
+            pst.setString(3, role);
+            
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                // Redirect to the correct JFrame based on the role
+                switch (role) {
+                    case "Admin" -> new AdminFrame(rs.getString("name")).setVisible(true);
+                    case "Teacher" -> new TeacherFrame(rs.getString("name")).setVisible(true);
+                    case "Parent" -> new ParentFrame(rs.getString("name")).setVisible(true);
+                    default -> {
+                    }
+                }
+                this.dispose(); // Close login frame
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid email, password, or role.");
+            }
+        }
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error connecting to database.");
+        }
+    
+    }                                            
+
+
+
+
+    private void jComboBoxRoleActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+
+    }                                             
+
+    private void FPbuttonActionPerformed(java.awt.event.ActionEvent evt) {                                         
+   
+     EmailForm emailForm = new EmailForm();
+    emailForm.setVisible(true);
+    }                                        
+
+    private void jCheckBoxShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+     if (jCheckBoxShowPassword.isSelected()) {
+        // Show password
+        jPasswordFieldPassword.setEchoChar((char) 0); // Set to 0 to show password
+    } else {
+        // Hide password
+        jPasswordFieldPassword.setEchoChar('•'); // Set to the default character
+    }
+    }                                                     
+
+
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JLabel AGAtitle;
+    private javax.swing.JLabel EmailLabel;
+    private javax.swing.JButton FPbutton;
+    private javax.swing.JLabel PasswordLabel;
+    private javax.swing.JCheckBox RememberMeButton;
+    private javax.swing.JLabel RoleSelector;
+    private javax.swing.JButton jButtonLogin;
+    private javax.swing.JCheckBox jCheckBoxShowPassword;
+    private javax.swing.JComboBox<String> jComboBoxRole;
+    private javax.swing.JPasswordField jPasswordFieldPassword;
+    private javax.swing.JTextField jTextFieldEmail;
+    // End of variables declaration                   
+}
+
